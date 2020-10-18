@@ -1,4 +1,4 @@
-package ExSheet7;
+package exSheet7;
 
 public class Exercise2 {
 	public static int round(double x)

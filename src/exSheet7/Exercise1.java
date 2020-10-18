@@ -1,4 +1,4 @@
-package ExSheet7;
+package exSheet7;
 
 // 	расчет числа Пи
 
