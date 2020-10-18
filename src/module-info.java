@@ -1,2 +1,4 @@
-module exSheet4 {
+module exSheet8
+{
+	requires java.desktop;
 }

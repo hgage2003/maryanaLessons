@@ -13,7 +13,8 @@ public class Exercise3 {
 		return result;
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		System.out.print("Please enter number:");
 		Scanner scanner = new Scanner(System.in);
 		int x = scanner.nextInt();

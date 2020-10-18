@@ -32,7 +32,8 @@ public class Exercise4 {
 		}
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		System.out.print("Please enter number of lines:");
 		Scanner scanner = new Scanner(System.in);
 		int x = scanner.nextInt();
