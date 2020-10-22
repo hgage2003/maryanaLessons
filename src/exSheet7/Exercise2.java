@@ -9,7 +9,7 @@ public class Exercise2 {
 	public static double round(double x, int digits)
 	{
 		if (digits < 0) {
-			System.out.println("Error: negative nber of decimal places");
+			System.out.println("Error: negative number of decimal places");
 			return 0;
 		}
 		

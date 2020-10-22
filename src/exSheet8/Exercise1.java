@@ -9,8 +9,7 @@ public class Exercise1
 	{
 		if (n < 0)
 		{
-			System.out.println("Error: negative power");
-			return 0;
+			return 1.0 / power(x, -n);
 		}
 		
 		if (n == 0)
@@ -30,6 +29,6 @@ public class Exercise1
 		int n = scanner.nextInt();
 		scanner.close();
 		
-		System.out.println(x + " times " + n + " is " + power(x,n));
+		System.out.println(x + " times " + n + " is " + power(x, n));
 	}
 }
