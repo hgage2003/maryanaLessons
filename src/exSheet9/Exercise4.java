@@ -39,6 +39,7 @@ public class Exercise4 {
 		res *= power(x, 2 * index + 1);
 		res /= factorial(2 * index + 1);
 		
+		// первые 5 слагаемых выводим на экран
 		if (index < 5)
 			System.out.println(String.valueOf(res));
 		
