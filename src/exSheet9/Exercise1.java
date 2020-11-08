@@ -52,17 +52,17 @@ public class Exercise1 {
 		return res;
 	}
 
-	public static int[] lotteryDraw(int size)
+	public static int[] lotteryDraw(int size, int drawSize)
 	{		
 		// здесь все возможные числа
 		int lottery[] = new int[size];
 		for (int i=0; i<size; i++)
 			lottery[i] = i;
 		
-		int res[] = new int[size];
+		int res[] = new int[drawSize];
 		Random r = new Random();
 		
-		for (int i = 0; i<size; i++)
+		for (int i = 0; i<drawSize; i++)
 		{
 			int draw = r.nextInt(lottery.length);
 			res[i] = lottery[draw];
@@ -74,12 +74,9 @@ public class Exercise1 {
 	
 	public static void main(String[] args)
 	{
-		int arr[] = lotteryDraw(20);
-		System.out.println("Draw results:");
-		printArray(arr);
-		arr = minSort(arr);
-		System.out.println("Sorted results:");
-		printArray(arr);
+		int draw[] = lotteryDraw(200, 5);
+		printArray(draw);
+		printArray(minSort(draw));
 	}
 
 }
