@@ -1,23 +1,36 @@
 package de.fhws.exSheet12;
 
+/*
 import static org.junit.Assert.*;
 import org.junit.Test;
+*/
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class PointTest
 {
+    private Point p;
+    private Throwable t;
+	
+    @BeforeEach
+    public void init()
+    {
+	p = new Point();
+    }
+	
     @Test
     public void testNegativeX()
-    {
+    {	
 	try
 	{
-	    Point p = new Point();
 	    p.shiftPoint(-1, 0);
-	    fail();
+	    fail("No Exception");
 	}
 	catch(RuntimeException e)
 	{
-	    if (!e.getMessage().equals("Coordinate is out of the screen"))
-		fail("test failed");
+	    assertEquals("Coordinate is out of the screen", e.getMessage());
 	}
     }
     
@@ -26,14 +39,12 @@ public class PointTest
     {
 	try
 	{
-	    Point p = new Point();
 	    p.shiftPoint(1921, 0);
-	    fail();
+	    fail("No exception");
 	}
 	catch(RuntimeException e)
 	{
-	    if (!e.getMessage().equals("Coordinate is out of the screen"))
-		fail("test failed");
+	    assertEquals("Coordinate is out of the screen", e.getMessage());
 	}
     }
     
@@ -42,45 +53,25 @@ public class PointTest
     {
 	try
 	{
-	    Point p = new Point();
 	    p.shiftPoint(0, -1);
-	    fail();
+	    fail("No exception");
 	}
 	catch(RuntimeException e)
 	{
-	    if (!e.getMessage().equals("Coordinate is out of the screen"))
-		fail("test failed");
+	    assertEquals("Coordinate is out of the screen", e.getMessage());
 	}
     }
     
     @Test
     public void testLargeY()
     {
-	try
-	{
-	    Point p = new Point();
-	    p.shiftPoint(0, 1081);
-	    fail();
-	}
-	catch(RuntimeException e)
-	{
-	    if (!e.getMessage().equals("Coordinate is out of the screen"))
-		fail("test failed");
-	}
+	t = assertThrows(RuntimeException.class, () -> p.shiftPoint(0, 1081));
+	assertEquals("Coordinate is out of the screen", t.getMessage());
     }
     
     @Test
     public void testCorrectCoords()
     {
-	try
-	{
-	    Point p = new Point();
-	    p.shiftPoint(1920, 1080);
-
-	}
-	catch(RuntimeException e)
-	{
-	    fail();
-	}
+	assertDoesNotThrow(() -> p.shiftPoint(1920, 1080));
     }
 }
