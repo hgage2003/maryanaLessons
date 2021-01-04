@@ -1,49 +1,45 @@
 package ex2_outputstreamdemo;
 
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import ex2_outputstreamdemo.OutputStreamDemo;
 
 public class OutputStreamDemoTest
 {
-    OutputStreamDemo osd = null;
-    String text = null;
-    byte[] b = null;
+    static final private String text = "Hello World!";
+    static final private byte[] b = text.getBytes();
 
-    @BeforeEach
-    public void setUp()
+    @Test
+    void testOK()
     {
-        osd = new OutputStreamDemo();
-        text = "Hallo Welt";
-        b = text.getBytes();
+	assertDoesNotThrow(() -> OutputStreamDemo.write(b, 0, text.length()));
     }
     
     @Test
-    void testOffsetNegative() {
-        assertThrows(IndexOutOfBoundsException.class, () -> osd.write(b, -1, 5));
-        assertThrows(IndexOutOfBoundsException.class, () -> osd.write(b, -12, -10));
-        assertThrows(IndexOutOfBoundsException.class, () -> osd.write(b, -99, 6));
+    void testOffsetNegative()
+    {
+        assertThrows(IndexOutOfBoundsException.class, () -> OutputStreamDemo.write(b, -1, 5));
+        assertThrows(IndexOutOfBoundsException.class, () -> OutputStreamDemo.write(b, -12, -10));
+        assertThrows(IndexOutOfBoundsException.class, () -> OutputStreamDemo.write(b, -99, 6));
     }
 
     @Test
-    void testLengthNegative() {
-        assertThrows(IndexOutOfBoundsException.class, () -> osd.write(b, 0, -1));
-        assertThrows(IndexOutOfBoundsException.class, () -> osd.write(b, 5, -17));
-        assertThrows(IndexOutOfBoundsException.class, () -> osd.write(b, -5, -98));
+    void testLengthNegative()
+    {
+        assertThrows(IndexOutOfBoundsException.class, () -> OutputStreamDemo.write(b, 0, -1));
+        assertThrows(IndexOutOfBoundsException.class, () -> OutputStreamDemo.write(b, 5, -17));
+        assertThrows(IndexOutOfBoundsException.class, () -> OutputStreamDemo.write(b, -5, -98));
     }
 
     @Test
-    void testOffsetPlusLengthGreaterArrayLength() {
-        assertThrows(IndexOutOfBoundsException.class, () -> osd.write(b, 0, 11));
-        assertThrows(IndexOutOfBoundsException.class, () -> osd.write(b, 5, 6));
+    void testOffsetPlusLengthGreaterArrayLength() 
+    {
+        assertThrows(IndexOutOfBoundsException.class, () -> OutputStreamDemo.write(b, 0, 25));
+        assertThrows(IndexOutOfBoundsException.class, () -> OutputStreamDemo.write(b, 5, 15));
     }
 
     @Test
-    void testThrowsNPE() {
-        b = null;
-        assertThrows(NullPointerException.class, () -> osd.write(b, 0, 2));
+    void testThrowsNPE() 
+    {
+        assertThrows(NullPointerException.class, () -> OutputStreamDemo.write(null, 0, 2));
     }
-
 }
