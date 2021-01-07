@@ -34,18 +34,14 @@ public class TcpClient extends TcpConnection
 	     Scanner scanner = new Scanner(System.in);)
 	{
 	    client.Connect();
-	    
+	  
 	    while (true)
 	    {
-		String str;
+		// our game outputs 2 lines each turn
+    		System.out.println(client.readLine());
+    		System.out.println(client.readLine());
 		
-		if (client.waitForData())
-		{
-		    while ((str = client.readLine()) != null)
-    		    	System.out.println(str);
-		}
-		
-		str = scanner.next();
+		String str = scanner.next();
 		client.write(str + '\n');
 	    }
 	}

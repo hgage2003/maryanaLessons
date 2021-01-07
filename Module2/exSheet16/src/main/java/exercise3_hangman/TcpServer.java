@@ -41,11 +41,7 @@ public class TcpServer extends TcpConnection
 	    
 	    while (!game.end())
 	    {
-		
-		server.write(game.getGuess() + '\n');
-		server.write("Attempt " + String.valueOf(game.getTries()) + ". Please enter letter or word:\n");
-		
-		server.waitForData();
+		server.write(game.getGuess() + "\nAttempt " + String.valueOf(game.getTries()) + ". Enter letter or word:\n");
 		
 		String str = server.readLine();
 		game.play(str);
@@ -54,7 +50,7 @@ public class TcpServer extends TcpConnection
 	    server.write("Hidden word: " + game.getAnswer() + '\n');
 	    
 	    if (game.isWon())
-		server.write("Congratulations! You won!\n");
+		server.write("Congratulations, you won!\n");
 	    else
 		server.write("You lost\n");
 	    

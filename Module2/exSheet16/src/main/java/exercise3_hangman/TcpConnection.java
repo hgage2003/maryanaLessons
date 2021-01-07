@@ -48,31 +48,10 @@ public abstract class TcpConnection implements Closeable
     
     public String readLine() throws IOException
     {
-	if (!connected || !reader.ready())
+	if (!connected)
 	    return null;
 	
 	return reader.readLine();
-    }
-    
-    public boolean waitForData() throws IOException
-    {
-	if (!connected)
-	    return false;
-	
-	while (!reader.ready())
-	{
-	    try 
-	    {
-		Thread.sleep(100);
-	    }
-	    catch (InterruptedException e)
-	    {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	    }
-	}
-	
-	return true;
     }
     
     public void write(String str) throws IOException
