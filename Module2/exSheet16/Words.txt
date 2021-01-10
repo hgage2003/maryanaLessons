@@ -1,0 +1,5 @@
+ABCDE
+SOMECONTACT
+SomeOtherContact
+AbCdEfGhIjKlMnOpQrStUvWxYz
+AndThisIsError%
