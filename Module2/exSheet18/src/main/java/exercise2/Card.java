@@ -1,4 +1,4 @@
-package exercise1;
+package exercise2;
 
 import java.util.Map;
 
@@ -48,12 +48,13 @@ public class Card implements Comparable<Card>
     public int compareTo(Card o)
     {
 	// Clubs > Spades > Hearts > Diamonds
-	Map<Card.Suit, Integer> suitWeight = 
-		Map.of(Suit.Clubs, 3, Suit.Spades, 2, Suit.Hearts, 1, Suit.Diamonds, 0);
+	Map<Card.Suit, Integer> suitWeight = Map.of(
+		Suit.Diamonds, 0, Suit.Hearts, 1, Suit.Spades, 2, Suit.Clubs, 3);
 	
-	Map<Card.Rank, Integer> rankWeight = 
-		Map.of(Rank.Seven, 0, Rank.Eight, 1, Rank.Nine, 2, Rank.Queen, 3,
-			Rank.King, 4, Rank.Ten, 5, Rank.Ace, 6, Rank.Jack, 100);
+	// Jack > Ace > 10 > King > Queen > 9 > 8 > 7
+	Map<Card.Rank, Integer> rankWeight = Map.of(
+		Rank.Seven, 0, Rank.Eight, 1, Rank.Nine, 2, Rank.Queen, 3,
+		Rank.King, 4, Rank.Ten, 5, Rank.Ace, 6, Rank.Jack, 100);
 	
 	int thisWeight = suitWeight.get(getSuit()) * 10 + rankWeight.get(getRank());
 	int otherWeight = suitWeight.get(o.getSuit()) * 10 + rankWeight.get(o.getRank());
