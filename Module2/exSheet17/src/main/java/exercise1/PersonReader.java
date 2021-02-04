@@ -18,7 +18,8 @@ public class PersonReader
 	    e.printStackTrace();
 	} catch (IOException e) 
 	{
-	    e.printStackTrace();
+	    if (!(e instanceof EOFException))
+		e.printStackTrace();
 	} catch (ClassNotFoundException e) 
 	{
 	    e.printStackTrace();

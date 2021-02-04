@@ -19,20 +19,9 @@ public class VocabularyTrainer
     
     public void createRandomWordToGuess()
     {
-	Set<String> keySet = english2German.keySet();
-	int randomIndex = (int)(Math.random() * keySet.size());
-	Iterator<String> iterator = keySet.iterator();
-	int i = 0;
-	while (iterator.hasNext())
-	{
-	    String word = iterator.next();
-	    if (i == randomIndex)
-	    {
-		wordToGuess = word;
-		return;
-	    }
-	    i++;
-	}
+	List<String> keys = new ArrayList<>(english2German.keySet());
+	int randomIndex = (int)(Math.random() * keys.size());
+	wordToGuess = keys.get(randomIndex);
     }
     
     public boolean guess(String guess)
