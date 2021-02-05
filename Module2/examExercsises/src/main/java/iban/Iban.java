@@ -34,14 +34,15 @@ public class Iban
 	    {
 		String iban = r.readLine();
 		ibanCheck(iban);
-		System.out.println("Check success");
 	    }
 	} catch (FileNotFoundException e)
 	{
 	    System.out.println("File " + filename + " not found");
 	} catch (IOException e)
 	{
-	    if (!(e instanceof EOFException))
+	    if (e instanceof EOFException)
+		System.out.println("Check success");
+	    else
 		System.out.println("Error reading file " + filename);
 	}
     }
